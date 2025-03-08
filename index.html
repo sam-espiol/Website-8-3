@@ -115,7 +115,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Responsive cho Mobile: Đảm bảo tất cả ảnh được hiển thị và container không che ảnh */
+    /* Responsive cho Mobile */
     @media (max-width: 600px) {
       h1 {
         font-size: clamp(24px, 4vw, 32px);
@@ -124,7 +124,7 @@
         font-size: clamp(16px, 3vw, 20px);
         padding: 15px;
       }
-      /* Đẩy container xuống để không che ảnh trên cùng và trên dưới */
+      /* Đẩy container xuống để không che ảnh trên cùng và dưới */
       .container {
         margin: 40vh auto 20vh auto;
         padding: 10px;
@@ -134,7 +134,7 @@
       .photo-booth .photo {
         width: 80px;
       }
-      /* Sắp xếp ảnh ở các góc và ảnh thứ 5 ở trên trung tâm */
+      /* Sắp xếp lại vị trí ảnh trên Mobile */
       .photo-1 { top: 2%; left: 2%; transform: rotate(-5deg); }
       .photo-2 { top: 2%; right: 2%; transform: rotate(3deg); }
       .photo-3 { bottom: 2%; left: 2%; transform: rotate(-3deg); }
@@ -142,6 +142,20 @@
       .photo-5 { top: 10%; left: 50%; transform: translateX(-50%) rotate(-2deg); }
     }
 
+    /* Style cho nút bật nhạc */
+    #playButton {
+      position: fixed;
+      bottom: 10%;
+      right: 5%;
+      padding: 10px 20px;
+      background: #ff69b4;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      z-index: 2;
+    }
   </style>
 </head>
 <body>
@@ -157,9 +171,11 @@
     <img src="pics/5.jpg" alt="Ảnh 5" class="photo photo-5">
   </div>
 
+  <!-- Nút bật nhạc -->
+  <button id="playButton">Bật nhạc</button>
 
   <!-- Audio nền -->
-  <audio id="bgMusic" src="music/Dù Cho Mai Về Sau (Acoustic Version) - buitruonglinh.mp3" autoplay loop></audio>
+  <audio id="bgMusic" src="music/Dù Cho Mai Về Sau (Acoustic Version) - buitruonglinh.mp3" loop></audio>
 
   <!-- Nội dung chính -->
   <div class="container">
@@ -173,6 +189,16 @@
     </div>
   </div>
 
+  <script>
+    // Khi người dùng nhấn nút "Bật nhạc", phát audio và ẩn nút đi
+    document.getElementById("playButton").addEventListener("click", function() {
+      const bgMusic = document.getElementById("bgMusic");
+      bgMusic.play().then(() => {
+        this.style.display = "none";
+      }).catch(error => {
+        console.log("Không thể phát nhạc:", error);
+      });
+    });
+  </script>
 </body>
 </html>
-  

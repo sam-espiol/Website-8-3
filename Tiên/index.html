@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chúc Mừng 8/3 - Dành Nguyễn Thị Thủy Tiên</title>
+  <!-- Link tới thư viện Animate.css nếu bạn muốn dùng hiệu ứng có sẵn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    /* Đặt nền trang */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    /* Gallery ảnh */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lời chúc */
+    .message {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.2em;
+      animation: fadeInUp 1.5s;
+    }
+
+    /* Hiệu ứng động dùng keyframes */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Audio nền -->
+  <audio id="bgMusic" src="du cho mai ve sau.mp3" autoplay loop></audio>
+
+  <div class="container">
+    <h1 class="animate__animated animate__fadeInDown">Chúc mừng 8/3, Nguyễn Thị Thủy Tiên!</h1>
+    
+    <!-- Gallery ảnh -->
+    <div class="gallery animate__animated animate__zoomIn">
+      <img src="pics/2.jpg" alt="Ảnh 1 của cô ấy">
+      <img src="pics/1.jpg" alt="Ảnh 2 của cô ấy">
+      <img src="pics/3.jpg" alt="Ảnh 3 của cô ấy">
+      <!-- Bạn có thể thêm nhiều ảnh khác -->
+    </div>
+    
+    <!-- Lời chúc -->
+    <div class="message">
+      <p>
+        Chào Nguyễn Thị Thủy Tiên,<br>
+        Nhân ngày 8/3, anh muốn gửi đến em những lời chúc tốt đẹp nhất. Chúc em luôn xinh đẹp, hạnh phúc và thành công. <br>
+        Hãy tận hưởng ngày đặc biệt này em nhé!
+      </p>
+    </div>
+  </div>
+
+  <!-- Tùy chọn: JavaScript để thêm một số hiệu ứng tương tác -->
+  <script>
+    // Ví dụ: Khi trang tải xong, hiển thị một thông báo nhỏ
+    document.addEventListener("DOMContentLoaded", function() {
+      console.log("Chào mừng đến với trang web chúc mừng 8/3 cho Nguyễn Thị Thủy Tiên!");
+      // Bạn có thể thêm các hiệu ứng tương tác khác ở đây.
+    });
+    
+    // Lưu ý: Một số trình duyệt trên thiết bị di động có thể chặn tự động phát âm thanh.
+    // Bạn có thể thêm một nút "Bật nhạc" để người dùng tự kích hoạt nếu cần.
+  </script>
+</body>
+</html>

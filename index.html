@@ -124,7 +124,6 @@
         font-size: clamp(16px, 3vw, 20px);
         padding: 15px;
       }
-      /* Đẩy container xuống để không che ảnh trên cùng và dưới */
       .container {
         margin: 40vh auto 20vh auto;
         padding: 10px;
@@ -134,7 +133,6 @@
       .photo-booth .photo {
         width: 80px;
       }
-      /* Sắp xếp lại vị trí ảnh trên Mobile */
       .photo-1 { top: 2%; left: 2%; transform: rotate(-5deg); }
       .photo-2 { top: 2%; right: 2%; transform: rotate(3deg); }
       .photo-3 { bottom: 2%; left: 2%; transform: rotate(-3deg); }
@@ -143,7 +141,7 @@
     }
 
     /* Style cho nút bật nhạc */
-/*     #playButton {
+    #playButton {
       position: fixed;
       bottom: 10%;
       right: 5%;
@@ -155,7 +153,26 @@
       font-size: 1em;
       cursor: pointer;
       z-index: 2;
-    } */
+    }
+
+    /* Style cho hiệu ứng hoa, trái tim rơi */
+    .falling {
+      position: fixed;
+      top: -50px;
+      pointer-events: none;
+      z-index: 3;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -172,10 +189,10 @@
   </div>
 
   <!-- Nút bật nhạc -->
-<!--   <button id="playButton">Bật nhạc</button> -->
+  <button id="playButton">Bật nhạc</button>
 
   <!-- Audio nền -->
-  <audio id="bgMusic" src="music/Dù Cho Mai Về Sau (Acoustic Version) - buitruonglinh.mp3" autoplay loop></audio>
+  <audio id="bgMusic" src="music/Dù Cho Mai Về Sau (Acoustic Version) - buitruonglinh.mp3" loop></audio>
 
   <!-- Nội dung chính -->
   <div class="container">
@@ -189,16 +206,48 @@
     </div>
   </div>
 
-<!--   <script>
-    // Khi người dùng nhấn nút "Bật nhạc", phát audio và ẩn nút đi
+  <script>
+    // Hàm tạo hiệu ứng rơi của một phần tử với ký hiệu cho trước
+    function createFallingElement(symbol) {
+      const el = document.createElement("div");
+      el.className = "falling";
+      el.innerText = symbol;
+      // Vị trí ngẫu nhiên theo chiều ngang
+      el.style.left = Math.random() * 100 + "vw";
+      // Kích thước ngẫu nhiên (16px đến 32px)
+      el.style.fontSize = (16 + Math.random() * 16) + "px";
+      // Thời gian animation ngẫu nhiên (3s đến 7s)
+      const duration = 3 + Math.random() * 4;
+      el.style.animationDuration = duration + "s";
+      // Độ trễ animation ngẫu nhiên (0 đến 2s)
+      const delay = Math.random() * 2;
+      el.style.animationDelay = delay + "s";
+      document.body.appendChild(el);
+      // Loại bỏ phần tử sau khi animation kết thúc
+      setTimeout(() => { el.remove(); }, (duration + delay) * 1000);
+    }
+
+    // Hàm kích hoạt hiệu ứng rơi liên tục
+    function startFallingEffects() {
+      // Tạo 2 phần tử mỗi 500ms
+      setInterval(() => {
+        createFallingElement("❤️");
+        createFallingElement("🌸");
+        createFallingElement("❤️");
+        createFallingElement("🌸");
+      }, 200);
+    }
+
+    // Khi người dùng nhấn nút "Bật nhạc"
     document.getElementById("playButton").addEventListener("click", function() {
       const bgMusic = document.getElementById("bgMusic");
       bgMusic.play().then(() => {
-        this.style.display = "none";
+        this.style.display = "none";  // Ẩn nút sau khi phát nhạc
+        startFallingEffects();         // Bắt đầu hiệu ứng hoa và trái tim rơi liên tục
       }).catch(error => {
         console.log("Không thể phát nhạc:", error);
       });
     });
-  </script> -->
+  </script>
 </body>
 </html>

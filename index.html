@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chúc Mừng 8/3 - Dành cho Nguyễn Thị Thủy Tiên</title>
+  <title>Chúc Mừng 8/3 - Dành Nguyễn Thị Thủy Tiên</title>
   <!-- Google Fonts: Sử dụng font Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <!-- Thư viện Animate.css -->
@@ -15,7 +15,7 @@
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     /* Nền lãng mạn với ảnh nền và overlay */
     body {
       font-family: 'Montserrat', sans-serif;
@@ -25,8 +25,6 @@
       overflow-x: hidden;
       position: relative;
     }
-    
-    /* Overlay tạo cảm giác ấm áp */
     .romantic-overlay {
       position: fixed;
       top: 0;
@@ -36,7 +34,7 @@
       background: rgba(255, 182, 193, 0.3); /* light pink overlay */
       z-index: -2;
     }
-    
+
     /* Photo Booth Background */
     .photo-booth {
       position: fixed;
@@ -47,7 +45,6 @@
       z-index: -1; /* Luôn nằm sau nội dung chính */
       overflow: hidden;
     }
-    
     .photo-booth .photo {
       position: absolute;
       width: 150px;
@@ -57,13 +54,11 @@
       border-radius: 8px;
       transition: transform 0.5s ease;
     }
-    
-    /* Hiệu ứng hover cho ảnh */
     .photo-booth .photo:hover {
       transform: scale(1.1) rotate(0deg);
     }
-    
-    /* Bố trí vị trí các ảnh trên desktop */
+
+    /* Bố trí ảnh trên Desktop */
     .photo-1 {
       top: 5%;
       left: 5%;
@@ -84,32 +79,30 @@
       right: 5%;
       transform: rotate(4deg);
     }
-    /* Ảnh thứ 5 được đặt ở dưới cùng, trung tâm */
+    /* Ảnh thứ 5 đặt ở dưới cùng, trung tâm */
     .photo-5 {
       bottom: 5%;
       left: 50%;
       transform: translateX(-50%) rotate(-2deg);
     }
-    
-    /* Container cho nội dung chính */
+
+    /* Container nội dung chính */
     .container {
       max-width: 960px;
-      margin: 20vh auto; /* Đẩy container xuống khoảng 20vh từ trên */
+      margin: 20vh auto; /* Đặt xuống khoảng 20% chiều cao màn hình */
       padding: 20px;
       text-align: center;
       background: rgba(255, 255, 255, 0.95);
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       position: relative;
       z-index: 1;
     }
-    
     h1 {
       font-size: 2.5em;
       margin-bottom: 20px;
       color: #4a4a4a;
     }
-    
     .message {
       background: rgba(255, 255, 255, 0.9);
       padding: 20px;
@@ -117,19 +110,12 @@
       font-size: 1.2em;
       animation: fadeInUp 1.5s;
     }
-    
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    
-    /* Responsive cho mobile: Điều chỉnh kích thước và vị trí */
+
+    /* Responsive cho Mobile: Đảm bảo tất cả ảnh được hiển thị và container không che ảnh */
     @media (max-width: 600px) {
       h1 {
         font-size: clamp(24px, 4vw, 32px);
@@ -138,29 +124,30 @@
         font-size: clamp(16px, 3vw, 20px);
         padding: 15px;
       }
+      /* Đẩy container xuống để không che ảnh trên cùng và trên dưới */
       .container {
+        margin: 40vh auto 20vh auto;
         padding: 10px;
-        margin: 10vh auto;
-        background: rgba(255, 255, 255, 0.98);
+        background: rgba(255,255,255,0.98);
         backdrop-filter: blur(5px);
       }
       .photo-booth .photo {
         width: 80px;
       }
-      /* Điều chỉnh vị trí ảnh trên mobile để tránh che container */
-      .photo-1 { top: 2%; left: 2%; }
-      .photo-2 { top: 2%; right: 2%; }
-      .photo-3 { bottom: 2%; left: 2%; }
-      .photo-4 { bottom: 2%; right: 2%; }
-      /* Ẩn ảnh thứ 5 trên mobile để tránh chồng lấn */
-      .photo-5 { display: none; }
+      /* Sắp xếp ảnh ở các góc và ảnh thứ 5 ở trên trung tâm */
+      .photo-1 { top: 2%; left: 2%; transform: rotate(-5deg); }
+      .photo-2 { top: 2%; right: 2%; transform: rotate(3deg); }
+      .photo-3 { bottom: 2%; left: 2%; transform: rotate(-3deg); }
+      .photo-4 { bottom: 2%; right: 2%; transform: rotate(4deg); }
+      .photo-5 { top: 10%; left: 50%; transform: translateX(-50%) rotate(-2deg); }
     }
+
   </style>
 </head>
 <body>
   <!-- Overlay nền lãng mạn -->
   <div class="romantic-overlay"></div>
-  
+
   <!-- Photo Booth Background với 5 ảnh -->
   <div class="photo-booth">
     <img src="pics/1.jpg" alt="Ảnh 1" class="photo photo-1">
@@ -169,10 +156,11 @@
     <img src="pics/4.jpg" alt="Ảnh 4" class="photo photo-4">
     <img src="pics/5.jpg" alt="Ảnh 5" class="photo photo-5">
   </div>
-  
-  <!-- Audio nền (lưu ý: trên mobile có thể cần tương tác người dùng để phát) -->
-  <audio id="bgMusic" src="Dù Cho Mai Về Sau (Acoustic Version) - buitruonglinh.mp3" autoplay loop></audio>
-  
+
+
+  <!-- Audio nền -->
+  <audio id="bgMusic" src="music/Dù Cho Mai Về Sau (Acoustic Version) - buitruonglinh.mp3" autoplay loop></audio>
+
   <!-- Nội dung chính -->
   <div class="container">
     <h1 class="animate__animated animate__fadeInDown">Chúc mừng 8/3, Nguyễn Thị Thủy Tiên!</h1>
@@ -185,14 +173,6 @@
     </div>
   </div>
 
-  <script>
-    // Cố gắng tự động phát nhạc khi trang được tải
-    document.addEventListener("DOMContentLoaded", function() {
-      const bgMusic = document.getElementById("bgMusic");
-      bgMusic.play().catch(error => {
-        console.log("Không thể tự động phát nhạc:", error);
-      });
-    });
-  </script>
 </body>
 </html>
+  
